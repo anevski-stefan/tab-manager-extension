@@ -1,0 +1,312 @@
+body {
+  width: 400px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+#app {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+nav {
+  display: flex;
+  background-color: #4a90e2;
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-btn.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+}
+
+.screen {
+  display: none;
+  padding: 20px;
+}
+
+.screen.active {
+  display: block;
+}
+
+h1 {
+  margin-top: 0;
+  color: #333;
+}
+
+input[type="text"], button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #3a7bc8;
+}
+
+#tabSelectionControls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+#tabSelectionControls button {
+  width: 48%;
+  padding: 5px;
+  font-size: 12px;
+}
+
+#tabList {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tab-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
+}
+
+.tab-item:last-child {
+  border-bottom: none;
+}
+
+.tab-item:hover {
+  background-color: #f0f0f0;
+}
+
+.tab-item input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #4a90e2;
+  border-radius: 3px;
+  outline: none;
+  transition: all 0.3s;
+  position: relative;
+  cursor: pointer;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.tab-item input[type="checkbox"]:checked {
+  background-color: #4CAF50; 
+  border-color: #4CAF50;
+}
+
+.tab-item label {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  cursor: pointer;
+  user-select: none;
+}
+
+.favicon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.tab-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+}
+
+#groupList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  padding: 15px;
+}
+
+.group-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, max-height 0.3s ease;
+  max-height: 1000px; 
+}
+
+.group-card.collapsed {
+  max-height: 50px; 
+}
+
+.group-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.group-header {
+  background-color: #4a90e2;
+  color: white;
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.group-header:hover {
+  background-color: #3a7bc8;
+}
+
+.group-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.group-content {
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+  max-height: 1000px; 
+  opacity: 1;
+}
+
+.group-card.collapsed .group-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.tab-count {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.group-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+}
+
+.group-actions button {
+  padding: 6px 12px;
+  font-size: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.open-group {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.rename-group {
+  background-color: #FFC107;
+  color: #333;
+}
+
+.remove-group {
+  background-color: #F44336;
+  color: white;
+}
+
+.group-actions button:hover {
+  opacity: 0.9;
+}
+
+.group-tabs {
+  padding: 10px 15px;
+}
+
+.group-tabs .tab-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 5px;
+  border: none;
+  position: relative;
+}
+
+.group-tabs .tab-item:hover {
+  background-color: #f0f0f0;
+}
+
+.group-tabs .favicon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.group-tabs .tab-title {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+  margin-right: 24px; 
+}
+
+.remove-tab {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: #999;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.remove-tab:hover {
+  background-color: #ff4444;
+  color: white;
+}
+
+.more-tabs {
+  font-size: 12px;
+  color: #777;
+  text-align: center;
+  margin-top: 5px;
+}
