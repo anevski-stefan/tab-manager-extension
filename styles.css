@@ -136,6 +136,11 @@ button:hover {
   user-select: none;
 }
 
+.validTabLink {
+  text-decoration: none;
+  color: #000;
+}
+
 .favicon {
   width: 16px;
   height: 16px;

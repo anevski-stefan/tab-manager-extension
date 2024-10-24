@@ -27,9 +27,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   
     function loadTabs() {
-      chrome.tabs.query({currentWindow: true}, function(tabs) {
+      chrome.tabs.query({currentWindow: true}, function(tabs) {        
         tabList.innerHTML = tabs.map(tab => {
-          let faviconSrc = tab.favIconUrl || getDefaultIcon(tab.url);
+          let faviconSrc;
+    
+          if (tab.url === 'chrome://newtab/') {
+            faviconSrc = 'https://fonts.gstatic.com/s/i/materialicons/settings/v1/24px.svg'; 
+          } else {
+            faviconSrc = tab.favIconUrl || getDefaultIcon(tab.url);
+          }
+    
           return `
             <div class="tab-item">
               <input type="checkbox" id="tab-${tab.id}" data-id="${tab.id}">
@@ -43,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         addCheckboxListeners();
       });
     }
-  
+    
     function getDefaultIcon(url) {
       if (url.startsWith('chrome://')) {
         return 'https://fonts.gstatic.com/s/i/materialicons/settings/v1/24px.svg';
@@ -135,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ${validTabs.map((tab, index) => `
                   <div class="tab-item" data-index="${index}">
                     <img src="${tab.favIconUrl || getDefaultIcon(tab.url)}" alt="Favicon" class="favicon">
-                    <span class="tab-title">${tab.title || 'Untitled'}</span>
+                    <span class="tab-title"><a class="validTabLink" href="${tab.url}" target="blank">${tab.title || 'Untitled'}</a></span>
                     <button class="remove-tab" title="Remove tab">X</button>
                   </div>
                 `).join('')}
