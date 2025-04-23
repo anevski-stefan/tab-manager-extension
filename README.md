@@ -41,6 +41,16 @@ A Chrome extension that helps you organize and manage your browser tabs efficien
 ### Context Menu
 Right-click on any webpage and select "Add Current Tab to Group" to quickly add it to an existing group.
 
+## Project Structure
+
+- `popup.html` & `popup.js`: Main extension interface
+- `select_group.html` & `select_group.js`: Group selection interface
+- `manage.html` & `manage.js`: Group management interface
+- `background.js`: Background service worker
+- `content.js`: Content script for webpage interaction
+- `styles.css`: Extension styling
+- `manifest.json`: Extension configuration
+
 ## Permissions
 
 The extension requires the following permissions:
@@ -55,3 +65,7 @@ Built using:
 - Vanilla JavaScript
 - CSS for styling
 - Chrome Storage Sync API for data persistence
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
